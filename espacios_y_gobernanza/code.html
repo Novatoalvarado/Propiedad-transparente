@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-container": "#00174b",
+                        "tertiary": "#000000",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#271901",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-container": "#271901",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#00174b",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-container": "#497cff",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-container": "#98805d",
+                        "on-background": "#191c1e",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+
+<style>
+    /* UX Transitions para navegación estática sin React/Next */
+    @keyframes smoothLoad { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    body { animation: smoothLoad 0.25s ease-out forwards; }
+</style>
+
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-4 z-[60] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-x-hidden overflow-y-auto">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">domain</span>
+</div>
+<div>
+<h2 class="text-lg truncate font-bold text-slate-900 dark:text-white font-manrope tracking-tight">PropiedadTransparente</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../dashboard_copropietario/code.html'">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope tracking-tight">Dashboard Copropietario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../pagos_y_recibos/code.html'">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-manrope tracking-tight">Pagos y Recibos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-900 dark:text-white font-bold border-r-4 border-slate-900 dark:border-white bg-white/50 dark:bg-slate-800/50 transition-colors"  cursor-pointer  onclick="window.location.href='../espacios_y_gobernanza/code.html'">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-manrope tracking-tight">Zonas comunes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../centro_de_votaciones_admin/code.html'">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-manrope tracking-tight">Centro Votaciones</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../panel_de_administraci_n/code.html'">
+<span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span>
+<span class="font-manrope tracking-tight">Panel Administrador</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../asistente_ia_chat_de_copropiedad_1/code.html'">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-manrope tracking-tight">Asistente y Chat</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../cargue_de_archivos/code.html'">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span class="font-manrope tracking-tight">Cargue de Archivos</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50">
+<div class="flex items-center gap-3 px-2">
+<img alt="Organization Logo" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Professional portrait of a middle-aged male property administrator in a sharp suit with a clean office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFw7WCI_SH-jxGMudN3tGFJnvU1BFBTOdd7F2lLbkw-RnC4r86IW7tEDelu0Bd4YuydOrVfbtBZk2X0KRDgiKXc7lZf3gd27ZMPGWtWRseCqp-78g2X4j3hfZpc_hn8ddjeeql1wdxbTzL1pgtz51RBq29KU6uvrvY9j7kRvNzSYkTFr9gikcDLiv39Vth7sv5T2_PcavCAqWgP5ljuc3n_ZrprU0J2sjKJHJEUlg5rY1Fsiocb-naB_UJD3OxHrg0gruSaAUHaza4"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-slate-900 truncate">Admin Carlos</p>
+<p class="text-xs text-slate-500 truncate">Unidad 402B</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-16rem)] h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex justify-between items-center px-4 lg:px-8 border-b border-slate-100 dark:border-slate-800 transition-all duration-300">
+<div class="hidden md:flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full w-80 lg:w-96 group focus-within:ring-2 ring-slate-200 dark:ring-slate-700 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-900" placeholder="Buscar movimientos, actas o reservas..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative" id="notifications-wrapper">
+<button id="notif-btn" class="relative text-slate-400 hover:text-slate-600 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-full p-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+
+<!-- Dropdown Flotante -->
+<div id="notif-dropdown" class="absolute right-0 top-full mt-3 w-80 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl hidden z-[70] overflow-hidden origin-top-right transition-all transform scale-95 opacity-0">
+    <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Notificaciones</h3>
+        <span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full">3 Nuevas</span>
+    </div>
+    <div class="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
+        <!-- Notif 1 -->
+        <a  onclick="window.location.href='../centro_de_votaciones_admin/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">how_to_vote</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Nueva Encuesta: Zonas Comunes</p>
+                    <p class="text-xs text-slate-500">Participa en la votación sobre paneles solares.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 2 horas</p>
+                </div>
+            </div>
+        </a>
+        <!-- Notif 2 -->
+        <div class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400 text-sm">campaign</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Aviso de Mantenimiento</p>
+                    <p class="text-xs text-slate-500">Limpieza de cisternas programada para este sábado a las 9:00 AM.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hoy a las 10:15</p>
+                </div>
+            </div>
+        </div>
+        <!-- Notif 3 -->
+        <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">receipt_long</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Pago Exitoso</p>
+                    <p class="text-xs text-slate-500">Tu recibo por la cuota de mantenimiento de Mayo está disponible.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 3 días</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="p-3 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-center">
+        <button id="mark-read-btn" class="text-xs font-bold text-primary hover:underline">Marcar todas como leídas</button>
+    </div>
+</div>
+</div>
+<a  onclick="window.location.href='../administracion_de_perfil/code.html'" class="flex items-center gap-3 pl-4 border-l border-slate-100 dark:border-slate-800 hover:opacity-60 transition-opacity cursor-pointer text-inherit no-underline">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold text-slate-900">Carlos Rodriguez</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-tighter">Copropietario</p>
+</div>
+<span class="material-symbols-outlined text-slate-900 text-3xl" data-icon="account_circle">account_circle</span>
+</a>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 min-h-screen bg-surface lg:ml-64 px-4 md:px-8 transition-all duration-300">
+<div class="p-8 space-y-10 max-w-7xl mx-auto">
+<!-- Header Section (Asymmetric Editorial Style) -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-extrabold tracking-tight text-primary leading-tight">Zonas comunes</h2>
+<p class="mt-4 text-on-surface-variant text-lg leading-relaxed">Gestione los activos comunitarios y participe en las decisiones que moldean nuestro futuro. La transparencia es la base de nuestra convivencia.</p>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-12 gap-8">
+<!-- 1. Reserva de Espacios (Calendar Grid) -->
+<section class="col-span-12 space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" data-icon="calendar_month">calendar_month</span>
+                                Reserva de Espacios
+                            </h3>
+<div class="flex gap-2">
+<select id="select-mes" class="border-none bg-surface-container rounded-lg text-sm font-bold px-4 py-2 hover:bg-surface-container-high transition-colors focus:ring-2 focus:ring-primary-container cursor-pointer text-slate-900 outline-none">
+    <option value="1">Enero</option>
+    <option value="2">Febrero</option>
+    <option value="3">Marzo</option>
+    <option value="4">Abril</option>
+    <option value="5">Mayo</option>
+    <option value="6" selected>Junio</option>
+    <option value="7">Julio</option>
+    <option value="8">Agosto</option>
+    <option value="9">Septiembre</option>
+    <option value="10">Octubre</option>
+    <option value="11">Noviembre</option>
+    <option value="12">Diciembre</option>
+</select>
+<select id="select-anio" class="border-none bg-surface-container rounded-lg text-sm font-bold px-4 py-2 hover:bg-surface-container-high transition-colors focus:ring-2 focus:ring-primary-container cursor-pointer text-slate-900 outline-none">
+    <option value="2023">2023</option>
+    <option value="2024" selected>2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+</select>
+</div>
+</div>
+<!-- Asset Selectors -->
+<div class="flex gap-4 mb-8 overflow-x-auto pb-2">
+<button class="flex-none px-5 py-2.5 rounded-full bg-primary-container text-white text-sm font-semibold">Salón Social</button>
+<button class="flex-none px-5 py-2.5 rounded-full bg-surface-container text-on-surface-variant text-sm font-semibold hover:bg-surface-container-high transition-colors">Zonas BBQ</button>
+<button class="flex-none px-5 py-2.5 rounded-full bg-surface-container text-on-surface-variant text-sm font-semibold hover:bg-surface-container-high transition-colors">Cancha de Tenis</button>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-1 bg-surface-container p-1 rounded-xl">
+<!-- Day Headers -->
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider text-primary truncate">Dom</div>
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider truncate">Lun</div>
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider truncate">Mar</div>
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider truncate">Mié</div>
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider truncate">Jue</div>
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider truncate">Vie</div>
+<div class="p-3 text-center text-[10px] font-bold text-outline uppercase tracking-wider text-primary truncate">Sáb</div>
+<!-- Dynamic Calendar Cells Container -->
+<div id="calendar-days-wrapper" class="contents"></div>
+</div>
+<div class="mt-8 p-6 rounded-xl bg-surface-container-low border border-outline-variant/10">
+<div class="flex items-start gap-4">
+<div class="p-3 rounded-lg bg-white">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Reserva seleccionada: <span id="reserva-dia">ningún día</span> de Junio</h4>
+<p class="text-xs text-on-surface-variant mt-1">Has seleccionado el Salón Social. El aforo máximo es de 50 personas. El costo de limpieza es de $45,000 COP.</p>
+<div class="mt-6 flex flex-wrap lg:flex-nowrap gap-3">
+<button onclick="confirmarReserva()" class="bg-primary-container text-white text-sm font-bold px-6 py-3 rounded-xl hover:opacity-90 hover:scale-105 transition-all shadow-md w-full sm:w-auto">Confirmar Reserva</button>
+<button onclick="verReglamentoBtn()" class="bg-surface-container-highest text-on-surface text-sm font-bold px-6 py-3 rounded-xl hover:bg-surface-container-high transition-all text-center w-full sm:w-auto">Ver Reglamento</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 3. Calificación de Personal (Bento-style Cards) -->
+<section class="col-span-12 space-y-8">
+<div class="flex items-center justify-between">
+<h3 class="text-2xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="reviews">reviews</span>
+                            Calificación de Personal
+                        </h3>
+<button class="text-sm font-bold text-on-surface-variant hover:text-primary transition-all">Ver todo el equipo</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Staff Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-primary-container hover:text-white transition-all duration-300">
+<div class="flex flex-col items-center text-center">
+<img alt="Staff Member" class="w-20 h-20 rounded-full object-cover mb-4 border-4 border-surface-container-high group-hover:border-white/20" data-alt="friendly male security guard in a professional dark uniform smiling against a corporate lobby background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWQTxp8HI37Ph_1D2boI9Dh2M-1vkQzmxAMnYCoeKP6rcTm0mnITkA0sqbVBo_yFrLNGWLX7Lkvl7Feh4er5exbk1lJFmHMG3cxyJk4yRhAW3UPt0F7GjxbJhCFZhWlcMkUB964YVuOQDZ9AYMhE_IUKqaKbo34g73MP-vE90-69vXrOYKWwenoxRb40W5kaoLOPto_5BP0gOTS4rVBHPOMlX_DEOmmsMNUnurbiaSYpOTYY1jepCltC9PImGZoWsMWYMHQd1cQLxZ"/>
+<h4 class="font-bold text-base">Ricardo Gómez</h4>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mb-4">Seguridad - Turno Mañana</p>
+<div class="flex gap-1 mb-6 rating-container justify-center">
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-outline-variant group-hover:text-white/20" data-icon="star">star</span>
+</div>
+<button class="text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border border-outline-variant group-hover:border-white/50">Calificar</button>
+</div>
+</div>
+<!-- Staff Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-primary-container hover:text-white transition-all duration-300">
+<div class="flex flex-col items-center text-center">
+<img alt="Staff Member" class="w-20 h-20 rounded-full object-cover mb-4 border-4 border-surface-container-high group-hover:border-white/20" data-alt="professional woman in business casual attire smiling warmly, property administration specialist profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsrxjnh1TqAjtZuUA_wNNur3-0ZBVl6Xyy0DzSrBXHW_uRO7JXuSuTzHDUFgtNUSSZ-DOEnSq2GrtbgCe5IXJSfT-KDW3vFgLp6KN5rmVCTDTfLSiiYnUwuvmAeOfbhFK6eneZwlrGRmJ4nBOSq3K-0YAc7ZzBZAC9NF7XJGzROV9L1N216EPEoQCplemk4wolxt2_aBO4erk8naICpxOhMsnq7ChspmmKDB3Y8_mZAYDLUndsKl5Kz8UJn6Ar68bl3v3OD4ACqgHY"/>
+<h4 class="font-bold text-base">Marta Lucía</h4>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mb-4">Administración</p>
+<div class="flex gap-1 mb-6 rating-container justify-center">
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<button class="text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border border-outline-variant group-hover:border-white/50">Calificar</button>
+</div>
+</div>
+<!-- Staff Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-primary-container hover:text-white transition-all duration-300">
+<div class="flex flex-col items-center text-center">
+<img alt="Staff Member" class="w-20 h-20 rounded-full object-cover mb-4 border-4 border-surface-container-high group-hover:border-white/20" data-alt="male maintenance worker in a neat polo shirt smiling, warm daylight setting indoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4uJeGdj5P9hyqIsA-BUEP6TN0J1KgbRa7AI7v6TaBVemP1BpbApvmvNjY6TsD3Dm4rfBiMRQWMxpiFzLsuwjBxLvTbdHsVDSJRojqXRv4DvSNlzNGeZh5cpHVdmgvoc6usJMOJvMOUTFZS-QFSIC0BPfq1mbY2Xv27ycoB3tqAKVwagleST-UGUOtNveAJobiKcdBWOYw06fdptoBvh6gxMU3HzSKLMKsvvxCYohqJHA2meiG_CkjF4X4pFq4AGqEZCjXfDWN6Rmd"/>
+<h4 class="font-bold text-base">Carlos Ruiz</h4>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mb-4">Servicios Generales</p>
+<div class="flex gap-1 mb-6 rating-container justify-center">
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-outline-variant group-hover:text-white/20" data-icon="star">star</span>
+<span class="material-symbols-outlined text-xl text-outline-variant group-hover:text-white/20" data-icon="star">star</span>
+</div>
+<button class="text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border border-outline-variant group-hover:border-white/50">Calificar</button>
+</div>
+</div>
+<!-- Staff Card 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-primary-container hover:text-white transition-all duration-300">
+<div class="flex flex-col items-center text-center">
+<img alt="Staff Member" class="w-20 h-20 rounded-full object-cover mb-4 border-4 border-surface-container-high group-hover:border-white/20" data-alt="cheerful woman in staff uniform smiling, background shows a clean modern building interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQZsFzRvqCfm7AYSQPi2wuvUF1aTaJbIbllhINGf4jM8PYrOufEbTntGQMH9THS2Z8TadTNuXrhyKTucESrN5z9bgPvSRuM2tYYWp-hX51MgTOLRKVAkcoGd9yKXRSUWjlRNC0eRleHXYkPlw2RAEbq2O_rpy7K02AlOf4iDfmmslWYFSjlyo7W5CIXAGTOW2NDXtmmT93H2UGbnTOLbhZplUwWLO8Cc2KgxcDGlMaOZ41NcHj252QQSsYEPLXI5tYOAGqPwz2-Oct"/>
+<h4 class="font-bold text-base">Elena Santos</h4>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mb-4">Seguridad - Turno Noche</p>
+<div class="flex gap-1 mb-6 rating-container justify-center">
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl text-outline-variant group-hover:text-white/20" data-icon="star">star</span>
+</div>
+<button class="text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border border-outline-variant group-hover:border-white/50">Calificar</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Ayuda Whatsapp -->
+<div class="fixed bottom-8 right-8 z-50 pointer-events-none">
+<a  onclick="window.location.href='https://wa.me/3201234567'" target="_blank" class="pointer-events-auto bg-white dark:bg-slate-900 p-4 rounded-xl shadow-2xl flex items-center gap-4 border border-outline-variant/30 animate-bounce hover:scale-105 hover:shadow-primary/30 transition-all cursor-pointer no-underline">
+<div class="w-12 h-12 bg-[#25D366] rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white" data-icon="chat">chat</span>
+</div>
+<div class="pr-2">
+<p class="text-sm font-bold text-slate-900 dark:text-white">¿Necesitas ayuda?</p>
+<p class="text-xs text-slate-500">Comunícate con administración.</p>
+</div>
+</a>
+</div>
+</div>
+
+<!-- Menú Deslizante JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('toggle-menu-btn')) return;
+
+        const sidebar = document.querySelector('aside');
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        
+        if (sidebar && header && main) {
+            // Eliminar clases conflictivas estáticas si las hay y asegurar base
+            sidebar.classList.add('transform', 'transition-transform', 'duration-300', 'z-[60]');
+            header.classList.add('transition-all', 'duration-300');
+            main.classList.add('transition-all', 'duration-300');
+
+            const menuBtnContainer = document.createElement('div');
+            menuBtnContainer.innerHTML = '<button id="toggle-menu-btn" class="flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-2 mr-2 lg:mr-4"><span class="material-symbols-outlined text-slate-800 dark:text-white">menu</span></button>';
+            const menuBtn = menuBtnContainer.firstChild;
+            header.insertBefore(menuBtn, header.firstChild);
+
+            // Capa oscura para dispositivos móviles
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0 lg:hidden';
+            document.body.appendChild(overlay);
+            
+            let isSidebarOpen = window.innerWidth >= 1024; // breakpoint lg Tailwind
+
+            function updateMenuUI() {
+                if (window.innerWidth >= 1024) { // Pantallas grandes (escritorio)
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('opacity-100');
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        sidebar.classList.add('lg:translate-x-0');
+                        header.style.width = 'calc(100% - 16rem)';
+                        main.style.marginLeft = '16rem';
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        sidebar.classList.remove('lg:translate-x-0');
+                        header.style.width = '100%';
+                        main.style.marginLeft = '0';
+                    }
+                } else { // Pantallas móviles e iPad vertical
+                    header.style.width = '100%';
+                    main.style.marginLeft = '0';
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        overlay.classList.remove('hidden');
+                        setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.remove('opacity-100');
+                        setTimeout(() => overlay.classList.add('hidden'), 300);
+                    }
+                }
+            }
+
+            menuBtn.onclick = () => {
+                isSidebarOpen = !isSidebarOpen;
+                updateMenuUI();
+            };
+
+            overlay.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+
+            // Escuchar redimensionamiento dinámico
+            window.addEventListener('resize', () => {
+                let wasDesktop = window.innerWidth >= 1024;
+                // Pequeño hack para resetear estado al pasar de mobile a desktop o viceversa
+                if(wasDesktop && sidebar.classList.contains('-translate-x-full') && header.style.width == '100%') {
+                    // Mantener decisiones del usuario
+                } else {
+                    isSidebarOpen = window.innerWidth >= 1024;
+                    updateMenuUI();
+                }
+            });
+
+            // Botón X en el propio sidebar para celular
+            const closeBtnContainer = document.createElement('div');
+            closeBtnContainer.innerHTML = '<button class="absolute top-4 right-4 lg:hidden flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-1"><span class="material-symbols-outlined text-slate-800 dark:text-white">close</span></button>';
+            const closeBtn = closeBtnContainer.firstChild;
+            closeBtn.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+            sidebar.appendChild(closeBtn);
+            
+            // Inicialización visual forzada
+            updateMenuUI();
+        }
+    });
+</script>
+
+<!-- Notificaciones JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notifBtn = document.getElementById('notif-btn');
+        const notifDropdown = document.getElementById('notif-dropdown');
+        const notifWrapper = document.getElementById('notifications-wrapper');
+
+        if (notifBtn && notifDropdown && notifWrapper) {
+            // Lógica para Marcar todo como leído
+            const markReadBtn = document.getElementById('mark-read-btn');
+            const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+            const redDot = document.querySelector('#notif-btn .bg-error');
+            const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+
+            function clearNotifs() {
+                if(notifsContainer) {
+                    notifsContainer.innerHTML = '<div class="p-8 text-center text-slate-500 flex flex-col items-center"><span class="material-symbols-outlined text-4xl mb-2 opacity-30">check_circle</span><p class="text-sm font-medium">Estás al día</p><p class="text-xs mt-1">No hay notificaciones nuevas</p></div>';
+                }
+                if(redDot) redDot.classList.add('hidden');
+                if(countBadge) countBadge.classList.add('hidden');
+                if(markReadBtn) markReadBtn.closest('div').classList.add('hidden'); // hides the footer action
+            }
+
+            // Check if already read across pages using localStorage
+            if(localStorage.getItem('notifsLeidas') === 'true') {
+                clearNotifs();
+            }
+
+            if(markReadBtn) {
+                markReadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // no cerrar el panel
+                    localStorage.setItem('notifsLeidas', 'true');
+                    clearNotifs();
+                });
+            }
+
+            notifBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent closing immediately
+                const isHidden = notifDropdown.classList.contains('hidden');
+                
+                if (isHidden) {
+                    notifDropdown.classList.remove('hidden');
+                    // Small delay to allow CSS display:block to apply before animating opacity
+                    setTimeout(() => {
+                        notifDropdown.classList.remove('scale-95', 'opacity-0');
+                        notifDropdown.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                } else {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150); // Matches transition duration
+                }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!notifWrapper.contains(e.target) && !notifDropdown.classList.contains('hidden')) {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150);
+                }
+            });
+        }
+    });
+</script>
+
+
+<!-- Interacción Estrellas JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.rating-container').forEach(container => {
+            const stars = container.querySelectorAll('.material-symbols-outlined');
+            stars.forEach((star, index) => {
+                star.classList.add('cursor-pointer', 'transition-all', 'hover:scale-125');
+                star.onclick = () => {
+                    stars.forEach((s, i) => {
+                        if (i <= index) {
+                            s.classList.add('text-tertiary-fixed');
+                            s.classList.remove('text-outline-variant', 'group-hover:text-white/20');
+                            s.style.fontVariationSettings = "'FILL' 1";
+                        } else {
+                            s.classList.remove('text-tertiary-fixed');
+                            s.classList.add('text-outline-variant', 'group-hover:text-white/20');
+                            s.style.fontVariationSettings = "'FILL' 0";
+                        }
+                    });
+                };
+            });
+        });
+    });
+</script>
+
+
+<!-- Zonas Comunes Logic -->
+<script>
+    function confirmarReserva() {
+        const dia = document.getElementById('reserva-dia').innerText;
+        if(dia === 'ningún día') return alert('Por favor selecciona un día en el calendario primero.');
+        
+        localStorage.setItem('reservaSocial', 'true');
+        localStorage.setItem('notifsLeidas', 'false'); // reset notificaciones
+        
+        if(typeof renderDynamicState === 'function') renderDynamicState();
+        
+        const notifDropdown = document.getElementById('notif-dropdown');
+        if(notifDropdown) {
+            notifDropdown.classList.remove('hidden', 'scale-95', 'opacity-0');
+            notifDropdown.classList.add('scale-100', 'opacity-100');
+        }
+    }
+
+    function verReglamentoBtn() {
+        if(localStorage.getItem('archivoReglamento') === 'true') {
+            const wind = window.open('about:blank', '_blank');
+            wind.document.write('<div style="font-family:sans-serif; text-align:center; padding-top: 50px;"><h2>Reglamento_Zonas_Comunes.pdf simulado</h2><p>Viendo el archivo que el administrador subió en el módulo de Cargue de Archivos.</p></div>');
+        } else {
+            alert('El archivo "Reglamento" no ha sido cargado. Pídele al administrador que lo suba a través de la sección "Cargue de Archivos".');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+            });
+</script>
+
+
+<!-- Arquitectura Global JS -->
+<script>
+    function renderDynamicState() {
+        const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+        const redDot = document.querySelector('#notif-btn .bg-error');
+        const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+        const markReadBtn = document.getElementById('mark-read-btn');
+        
+        if(localStorage.getItem('reservaSocial') === 'true' && localStorage.getItem('notifsLeidas') !== 'true') {
+             if(notifsContainer) {
+                 notifsContainer.innerHTML = `
+                    <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+                        <div class="flex gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">calendar_month</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Reserva Emitida Exitosamente</p>
+                                <p class="text-xs text-slate-500">Tu reserva del Salón Social generó un recargo por concepto de limpieza y aforo.</p>
+                                <p class="text-[10px] text-primary mt-1 font-bold">Ver factura pendiente en Pagos</p>
+                            </div>
+                        </div>
+                    </a>
+                 `;
+             }
+             if(redDot) redDot.classList.remove('hidden');
+             if(countBadge) {
+                 countBadge.classList.remove('hidden');
+                 countBadge.innerText = "1 Nueva";
+             }
+             if(markReadBtn) {
+                 const foot = markReadBtn.closest('div');
+                 if(foot) foot.classList.remove('hidden');
+             }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', renderDynamicState);
+</script>
+
+<!-- Dynamic Calendar Logic -->
+<script>
+    function renderCalendar(year, month) {
+        const wrapper = document.getElementById('calendar-days-wrapper');
+        if(!wrapper) return;
+        
+        const endOfMonth = new Date(year, month, 0).getDate();
+        let startDayOfWeek = new Date(year, month - 1, 1).getDay(); // Dom = 0, Lun = 1
+        
+        let html = '';
+        for(let i=0; i<startDayOfWeek; i++) {
+            html += '<div class="aspect-square bg-surface p-2 text-xs font-medium text-outline-variant opacity-50 rounded"></div>';
+        }
+        
+        for(let i=1; i<=endOfMonth; i++) {
+            html += `<div class="aspect-square bg-surface-container-lowest p-2 text-xs font-bold hover:bg-primary-container/5 cursor-pointer flex flex-col justify-between transition-colors text-center items-center rounded focus:outline-none">
+                         <span>${i}</span>
+                     </div>`;
+        }
+        wrapper.innerHTML = html;
+        
+        // Re-attach listeners to dynamically generated element
+        document.querySelectorAll('.aspect-square.bg-surface-container-lowest').forEach(cell => {
+            cell.addEventListener('click', function() {
+                document.querySelectorAll('.aspect-square.bg-primary-container').forEach(el => {
+                    if(el !== this) {
+                        el.classList.remove('bg-primary-container', 'text-white', 'ring-4', 'ring-primary-container/20');
+                        el.classList.add('bg-surface-container-lowest', 'hover:bg-primary-container/5');
+                    }
+                });
+
+                this.classList.toggle('bg-surface-container-lowest');
+                this.classList.toggle('hover:bg-primary-container/5');
+                this.classList.toggle('bg-primary-container');
+                this.classList.toggle('text-white');
+                this.classList.toggle('ring-4');
+                this.classList.toggle('ring-primary-container/20');
+                
+                const isSelected = this.classList.contains('bg-primary-container');
+                document.getElementById('reserva-dia').innerText = isSelected ? this.querySelector('span').innerText : 'ningún día';
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectMes = document.getElementById('select-mes');
+        const selectAnio = document.getElementById('select-anio');
+        const monthSelector = document.getElementById('month-selector');
+        
+        function callRender() {
+            if(selectMes && selectAnio) {
+                renderCalendar(parseInt(selectAnio.value), parseInt(selectMes.value));
+            }
+        }
+
+        if(selectMes && selectAnio) {
+            selectMes.addEventListener('change', callRender);
+            selectAnio.addEventListener('change', callRender);
+            callRender(); // initial load
+        } else if(monthSelector) { // Fallback if exists
+            monthSelector.addEventListener('change', (e) => {
+                const val = e.target.value.split('-');
+                if(val.length === 2) {
+                    renderCalendar(parseInt(val[0]), parseInt(val[1]));
+                }
+            });
+            const initVal = monthSelector.value.split('-');
+            if(initVal.length === 2) renderCalendar(parseInt(initVal[0]), parseInt(initVal[1]));
+        }
+    });
+</script>
+
+<!-- Ocultamiento dinámico de pantallas administrativas -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const role = localStorage.getItem('userRole') || 'COPROPIETARIO';
+        if (role !== 'ADMIN') {
+            const linksToHide = [
+                'centro_de_votaciones_admin',
+                'panel_de_administraci_n',
+                'cargue_de_archivos'
+            ];
+            document.querySelectorAll('aside nav a').forEach(link => {
+                const href = link.getAttribute('onclick') || link.getAttribute('href') || '';
+                if (linksToHide.some(frag => href.includes(frag))) {
+                    link.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

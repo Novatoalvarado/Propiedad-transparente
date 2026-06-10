@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-container": "#00174b",
+                        "tertiary": "#000000",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#271901",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-container": "#271901",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#00174b",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-container": "#497cff",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-container": "#98805d",
+                        "on-background": "#191c1e",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+
+<style>
+    /* UX Transitions para navegación estática sin React/Next */
+    @keyframes smoothLoad { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    body { animation: smoothLoad 0.25s ease-out forwards; }
+</style>
+
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-4 z-[60] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-x-hidden overflow-y-auto">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">domain</span>
+</div>
+<div>
+<h2 class="text-lg truncate font-bold text-slate-900 dark:text-white font-manrope tracking-tight">PropiedadTransparente</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../dashboard_copropietario/code.html'">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope tracking-tight">Dashboard Copropietario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-900 dark:text-white font-bold border-r-4 border-slate-900 dark:border-white bg-white/50 dark:bg-slate-800/50 transition-colors"  cursor-pointer  onclick="window.location.href='../pagos_y_recibos/code.html'">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-manrope tracking-tight">Pagos y Recibos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../espacios_y_gobernanza/code.html'">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-manrope tracking-tight">Zonas comunes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../centro_de_votaciones_admin/code.html'">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-manrope tracking-tight">Centro Votaciones</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../panel_de_administraci_n/code.html'">
+<span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span>
+<span class="font-manrope tracking-tight">Panel Administrador</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../asistente_ia_chat_de_copropiedad_1/code.html'">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-manrope tracking-tight">Asistente y Chat</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../cargue_de_archivos/code.html'">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span class="font-manrope tracking-tight">Cargue de Archivos</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50">
+<div class="flex items-center gap-3 px-2">
+<img alt="Organization Logo" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Professional portrait of a middle-aged male property administrator in a sharp suit with a clean office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFw7WCI_SH-jxGMudN3tGFJnvU1BFBTOdd7F2lLbkw-RnC4r86IW7tEDelu0Bd4YuydOrVfbtBZk2X0KRDgiKXc7lZf3gd27ZMPGWtWRseCqp-78g2X4j3hfZpc_hn8ddjeeql1wdxbTzL1pgtz51RBq29KU6uvrvY9j7kRvNzSYkTFr9gikcDLiv39Vth7sv5T2_PcavCAqWgP5ljuc3n_ZrprU0J2sjKJHJEUlg5rY1Fsiocb-naB_UJD3OxHrg0gruSaAUHaza4"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-slate-900 truncate">Admin Carlos</p>
+<p class="text-xs text-slate-500 truncate">Unidad 402B</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-16rem)] h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex justify-between items-center px-4 lg:px-8 border-b border-slate-100 dark:border-slate-800 transition-all duration-300">
+<div class="hidden md:flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full w-80 lg:w-96 group focus-within:ring-2 ring-slate-200 dark:ring-slate-700 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-900" placeholder="Buscar movimientos, actas o reservas..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative" id="notifications-wrapper">
+<button id="notif-btn" class="relative text-slate-400 hover:text-slate-600 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-full p-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+
+<!-- Dropdown Flotante -->
+<div id="notif-dropdown" class="absolute right-0 top-full mt-3 w-80 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl hidden z-[70] overflow-hidden origin-top-right transition-all transform scale-95 opacity-0">
+    <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Notificaciones</h3>
+        <span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full">3 Nuevas</span>
+    </div>
+    <div class="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
+        <!-- Notif 1 -->
+        <a  onclick="window.location.href='../centro_de_votaciones_admin/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">how_to_vote</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Nueva Encuesta: Zonas Comunes</p>
+                    <p class="text-xs text-slate-500">Participa en la votación sobre paneles solares.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 2 horas</p>
+                </div>
+            </div>
+        </a>
+        <!-- Notif 2 -->
+        <div class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400 text-sm">campaign</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Aviso de Mantenimiento</p>
+                    <p class="text-xs text-slate-500">Limpieza de cisternas programada para este sábado a las 9:00 AM.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hoy a las 10:15</p>
+                </div>
+            </div>
+        </div>
+        <!-- Notif 3 -->
+        <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">receipt_long</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Pago Exitoso</p>
+                    <p class="text-xs text-slate-500">Tu recibo por la cuota de mantenimiento de Mayo está disponible.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 3 días</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="p-3 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-center">
+        <button id="mark-read-btn" class="text-xs font-bold text-primary hover:underline">Marcar todas como leídas</button>
+    </div>
+</div>
+</div>
+<a  onclick="window.location.href='../administracion_de_perfil/code.html'" class="flex items-center gap-3 pl-4 border-l border-slate-100 dark:border-slate-800 hover:opacity-60 transition-opacity cursor-pointer text-inherit no-underline">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold text-slate-900">Carlos Rodriguez</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-tighter">Copropietario</p>
+</div>
+<span class="material-symbols-outlined text-slate-900 text-3xl" data-icon="account_circle">account_circle</span>
+</a>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-12 min-h-screen lg:ml-64 px-4 md:px-8 transition-all duration-300">
+<!-- Summary Panel & Quick Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Debt Card -->
+<div class="bg-primary-container rounded-xl p-6 text-white flex flex-col justify-between h-44 relative overflow-hidden group">
+<div class="z-10">
+<p class="text-on-primary-container font-medium text-sm mb-1">Deuda Total</p>
+<h2 class="text-4xl font-extrabold font-manrope">$4.250.000</h2>
+</div>
+<div class="z-10 flex items-center gap-2 text-xs opacity-80">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                    Vencimiento próximo: 15 Oct
+                </div>
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-on-primary-container opacity-10 rounded-full blur-2xl group-hover:scale-110 transition-transform"></div>
+</div>
+<!-- Credits Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between h-44 border-b-4 border-secondary shadow-sm">
+<div>
+<p class="text-on-secondary-container font-medium text-sm mb-1">Créditos Disponibles</p>
+<h2 class="text-4xl font-extrabold font-manrope text-on-surface">$180.000</h2>
+</div>
+<div class="flex items-center gap-2 text-xs text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                    Aplicable a próxima factura
+                </div>
+</div>
+<!-- Accountant Tab Card / Books Summary -->
+<div class="bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between h-44 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-medium text-sm mb-1">Libros Contables Q3</p>
+<h2 class="text-2xl font-bold font-manrope text-on-surface">Equilibrio Financiero</h2>
+</div>
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter">Saludable</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-2">
+<div class="bg-on-primary-container h-1.5 rounded-full" style="width: 82%"></div>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+                    Ver Informe Completo <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Two Column Layout: Pending and History -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Pagos Pendientes (Lef column, 8 spans) -->
+<section class="lg:col-span-8">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-5 flex justify-between items-center border-b border-surface-container">
+<h3 class="text-lg font-bold font-manrope">Pagos Pendientes</h3>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-error rounded-full"></span>
+<span class="text-xs font-medium text-on-surface-variant">Vencidos en rojo</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-[10px] uppercase tracking-wider text-on-secondary-container font-bold">
+<tr>
+<th class="px-6 py-3">Concepto</th>
+<th class="px-6 py-3">Referencia</th>
+<th class="px-6 py-3">Vencimiento</th>
+<th class="px-6 py-3">Monto</th>
+<th class="px-6 py-3 text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-sm" data-icon="home">home</span>
+</div>
+<div>
+<p class="text-sm font-bold">Administración Mensual</p>
+<p class="text-[10px] text-on-surface-variant">Torre A - Apto 402</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">#REF-88291</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium text-error">10 Oct, 2023</span>
+</td>
+<td class="px-6 py-4 text-sm font-bold">$1.200.000</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-primary-container text-white px-4 py-1.5 rounded-lg text-xs font-bold flex items-center gap-2 ml-auto hover:opacity-90 transition-opacity">
+<img class="h-3 w-auto" data-alt="small official PSE logo with blue and green branding for secure colombian payments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2c3qliI5P9oDi7VB924u2ublvirTFE2Wk5elv_ATvKTi6u9AVPYJ30PPq0u6f4vSmiGyaBZg_aiTUc92uXcmyyhfHNdeeTuAdXfN0CZBjln7AvNQhZLlyfrysZ99GKSpwyAd5vxN2Dc6dsD9y5Np9KOuu7QxPz60P6VRFOLW_7RY7MKxNwhqf2YXfhzqflPUKLQSxU2pfp_ooyeTqbOPwQZHfGB3DcPdkaZKtXonLYq81E8wrAUUOIWiTCcuh8Eh3scXTEsqX55Bs"/>
+                                            Pagar
+                                        </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-sm" data-icon="pool">pool</span>
+</div>
+<div>
+<p class="text-sm font-bold">Reserva Salón Social</p>
+<p class="text-[10px] text-on-surface-variant">Evento Privado</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">#REF-90212</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium text-on-surface">22 Oct, 2023</span>
+</td>
+<td class="px-6 py-4 text-sm font-bold">$150.000</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-primary-container text-white px-4 py-1.5 rounded-lg text-xs font-bold flex items-center gap-2 ml-auto hover:opacity-90 transition-opacity">
+<img class="h-3 w-auto" data-alt="small official PSE logo with blue and green branding for secure colombian payments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMRWRn2exrkd5xPI22AKM6CjVRJM7gmfMBY33_u3_bORDv_tXQxOtWu50Kr6N-F6Ii0pxqRvxFW4D4udjOk3eEKk6wfm8oga_cc1g-VOuzSEIDe6pWsGzHXbveV6lEU_3pROtHisCL-mZBFqSDS9mqiDN_QhF2VteLArQ7-vdhDExt9MBKokHduTJkTNt1H0suAIjOsnVwxzc6MwwpxbEuw_zhczXVpowhGZjh-17oQQHLRnak40CAKV4uN8ku-WfplXX5t6hVVsrI"/>
+                                            Pagar
+                                        </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-sm" data-icon="gavel">gavel</span>
+</div>
+<div>
+<p class="text-sm font-bold">Multa Convivencia</p>
+<p class="text-[10px] text-on-surface-variant">Ruidos Molestos (Sept)</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">#REF-33104</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium text-error">05 Oct, 2023</span>
+</td>
+<td class="px-6 py-4 text-sm font-bold">$2.900.000</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-primary-container text-white px-4 py-1.5 rounded-lg text-xs font-bold flex items-center gap-2 ml-auto hover:opacity-90 transition-opacity">
+<img class="h-3 w-auto" data-alt="small official PSE logo with blue and green branding for secure colombian payments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeVdH3_koLgwRp-3bwm3Ntxl93yi-PLxk4siGyyQUBzbY5w6-d5gPtFVkGn2gcOJmYB7ZyKtyCH6kmAVoD0loDqN7lB0X-ZrNbelq_91l_leTsg-m2vDmKKMyoJFbqIr38rK7FaVf6cRd2IyakN4kXpdgzQ8a8cazbD6EdkDal9UebdnamYyFs0cf5jlBMVQ2ib9nLFHm1uBxGU5d75KSE_bRMmOdROpWseQkTw2mVG1y3ABsPiSGkQ3I9m3XxAsim8wLTWsSlHetd"/>
+                                            Pagar
+                                        </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Quarterly Summary (Libros Contables) Section -->
+<div class="mt-8">
+<h3 class="text-lg font-bold font-manrope mb-4">Libros Contables - Q3 Summary</h3>
+<div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Ingresos</p>
+<p class="text-lg font-bold text-green-600">$142.5M</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Egresos</p>
+<p class="text-lg font-bold text-error">$118.2M</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Reservas</p>
+<p class="text-lg font-bold text-primary-container">$24.3M</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Caja Chica</p>
+<p class="text-lg font-bold text-on-surface">$2.1M</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Historial de Pagos (Right column, 4 spans) -->
+<section class="lg:col-span-4">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm h-full flex flex-col">
+<div class="px-6 py-5 border-b border-surface-container flex justify-between items-center">
+<h3 class="text-lg font-bold font-manrope">Historial de Pagos</h3>
+<button class="text-primary-container">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<div class="p-4 space-y-4 flex-1">
+<!-- Transaction item 1 -->
+<div class="group border-b border-surface-container-low pb-4 last:border-0">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded tracking-tight">COMPLETADO</span>
+<span class="text-xs text-on-surface-variant">12 Sep</span>
+</div>
+<p class="text-sm font-bold">Administración Septiembre</p>
+<p class="text-xs text-on-surface-variant mb-3">$1.200.000 • PSE Direct</p>
+<button class="w-full py-2 bg-surface-container-low text-on-secondary-container rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+                                Descargar Recibo (PDF)
+                            </button>
+</div>
+<!-- Transaction item 2 -->
+<div class="group border-b border-surface-container-low pb-4 last:border-0">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded tracking-tight">COMPLETADO</span>
+<span class="text-xs text-on-surface-variant">28 Ago</span>
+</div>
+<p class="text-sm font-bold">Arriendo Salón Social</p>
+<p class="text-xs text-on-surface-variant mb-3">$250.000 • Tarjeta Crédito</p>
+<button class="w-full py-2 bg-surface-container-low text-on-secondary-container rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+                                Descargar Recibo (PDF)
+                            </button>
+</div>
+<!-- Transaction item 3 -->
+<div class="group border-b border-surface-container-low pb-4 last:border-0">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded tracking-tight">COMPLETADO</span>
+<span class="text-xs text-on-surface-variant">10 Ago</span>
+</div>
+<p class="text-sm font-bold">Administración Agosto</p>
+<p class="text-xs text-on-surface-variant mb-3">$1.200.000 • PSE Direct</p>
+<button class="w-full py-2 bg-surface-container-low text-on-secondary-container rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+                                Descargar Recibo (PDF)
+                            </button>
+</div>
+<!-- Transaction item 4 -->
+<div class="group border-b border-surface-container-low pb-4 last:border-0">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded tracking-tight">COMPLETADO</span>
+<span class="text-xs text-on-surface-variant">15 Jul</span>
+</div>
+<p class="text-sm font-bold">Cuota Extraordinaria</p>
+<p class="text-xs text-on-surface-variant mb-3">$450.000 • Transferencia</p>
+<button class="w-full py-2 bg-surface-container-low text-on-secondary-container rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+                                Descargar Recibo (PDF)
+                            </button>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low">
+<button class="w-full text-center text-xs font-bold text-on-primary-container hover:underline uppercase tracking-widest">
+                            Ver historial completo
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<!-- Menú Deslizante JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('toggle-menu-btn')) return;
+
+        const sidebar = document.querySelector('aside');
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        
+        if (sidebar && header && main) {
+            // Eliminar clases conflictivas estáticas si las hay y asegurar base
+            sidebar.classList.add('transform', 'transition-transform', 'duration-300', 'z-[60]');
+            header.classList.add('transition-all', 'duration-300');
+            main.classList.add('transition-all', 'duration-300');
+
+            const menuBtnContainer = document.createElement('div');
+            menuBtnContainer.innerHTML = '<button id="toggle-menu-btn" class="flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-2 mr-2 lg:mr-4"><span class="material-symbols-outlined text-slate-800 dark:text-white">menu</span></button>';
+            const menuBtn = menuBtnContainer.firstChild;
+            header.insertBefore(menuBtn, header.firstChild);
+
+            // Capa oscura para dispositivos móviles
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0 lg:hidden';
+            document.body.appendChild(overlay);
+            
+            let isSidebarOpen = window.innerWidth >= 1024; // breakpoint lg Tailwind
+
+            function updateMenuUI() {
+                if (window.innerWidth >= 1024) { // Pantallas grandes (escritorio)
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('opacity-100');
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        sidebar.classList.add('lg:translate-x-0');
+                        header.style.width = 'calc(100% - 16rem)';
+                        main.style.marginLeft = '16rem';
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        sidebar.classList.remove('lg:translate-x-0');
+                        header.style.width = '100%';
+                        main.style.marginLeft = '0';
+                    }
+                } else { // Pantallas móviles e iPad vertical
+                    header.style.width = '100%';
+                    main.style.marginLeft = '0';
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        overlay.classList.remove('hidden');
+                        setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.remove('opacity-100');
+                        setTimeout(() => overlay.classList.add('hidden'), 300);
+                    }
+                }
+            }
+
+            menuBtn.onclick = () => {
+                isSidebarOpen = !isSidebarOpen;
+                updateMenuUI();
+            };
+
+            overlay.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+
+            // Escuchar redimensionamiento dinámico
+            window.addEventListener('resize', () => {
+                let wasDesktop = window.innerWidth >= 1024;
+                // Pequeño hack para resetear estado al pasar de mobile a desktop o viceversa
+                if(wasDesktop && sidebar.classList.contains('-translate-x-full') && header.style.width == '100%') {
+                    // Mantener decisiones del usuario
+                } else {
+                    isSidebarOpen = window.innerWidth >= 1024;
+                    updateMenuUI();
+                }
+            });
+
+            // Botón X en el propio sidebar para celular
+            const closeBtnContainer = document.createElement('div');
+            closeBtnContainer.innerHTML = '<button class="absolute top-4 right-4 lg:hidden flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-1"><span class="material-symbols-outlined text-slate-800 dark:text-white">close</span></button>';
+            const closeBtn = closeBtnContainer.firstChild;
+            closeBtn.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+            sidebar.appendChild(closeBtn);
+            
+            // Inicialización visual forzada
+            updateMenuUI();
+        }
+    });
+</script>
+
+<!-- Notificaciones JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notifBtn = document.getElementById('notif-btn');
+        const notifDropdown = document.getElementById('notif-dropdown');
+        const notifWrapper = document.getElementById('notifications-wrapper');
+
+        if (notifBtn && notifDropdown && notifWrapper) {
+            // Lógica para Marcar todo como leído
+            const markReadBtn = document.getElementById('mark-read-btn');
+            const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+            const redDot = document.querySelector('#notif-btn .bg-error');
+            const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+
+            function clearNotifs() {
+                if(notifsContainer) {
+                    notifsContainer.innerHTML = '<div class="p-8 text-center text-slate-500 flex flex-col items-center"><span class="material-symbols-outlined text-4xl mb-2 opacity-30">check_circle</span><p class="text-sm font-medium">Estás al día</p><p class="text-xs mt-1">No hay notificaciones nuevas</p></div>';
+                }
+                if(redDot) redDot.classList.add('hidden');
+                if(countBadge) countBadge.classList.add('hidden');
+                if(markReadBtn) markReadBtn.closest('div').classList.add('hidden'); // hides the footer action
+            }
+
+            // Check if already read across pages using localStorage
+            if(localStorage.getItem('notifsLeidas') === 'true') {
+                clearNotifs();
+            }
+
+            if(markReadBtn) {
+                markReadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // no cerrar el panel
+                    localStorage.setItem('notifsLeidas', 'true');
+                    clearNotifs();
+                });
+            }
+
+            notifBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent closing immediately
+                const isHidden = notifDropdown.classList.contains('hidden');
+                
+                if (isHidden) {
+                    notifDropdown.classList.remove('hidden');
+                    // Small delay to allow CSS display:block to apply before animating opacity
+                    setTimeout(() => {
+                        notifDropdown.classList.remove('scale-95', 'opacity-0');
+                        notifDropdown.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                } else {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150); // Matches transition duration
+                }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!notifWrapper.contains(e.target) && !notifDropdown.classList.contains('hidden')) {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150);
+                }
+            });
+        }
+    });
+</script>
+
+
+<!-- Arquitectura Global JS -->
+<script>
+    function renderDynamicState() {
+        const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+        const redDot = document.querySelector('#notif-btn .bg-error');
+        const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+        const markReadBtn = document.getElementById('mark-read-btn');
+        
+        if(localStorage.getItem('reservaSocial') === 'true' && localStorage.getItem('notifsLeidas') !== 'true') {
+             if(notifsContainer) {
+                 notifsContainer.innerHTML = `
+                    <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+                        <div class="flex gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">calendar_month</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Reserva Emitida Exitosamente</p>
+                                <p class="text-xs text-slate-500">Tu reserva del Salón Social generó un recargo por concepto de limpieza y aforo.</p>
+                                <p class="text-[10px] text-primary mt-1 font-bold">Ver factura pendiente en Pagos</p>
+                            </div>
+                        </div>
+                    </a>
+                 `;
+             }
+             if(redDot) redDot.classList.remove('hidden');
+             if(countBadge) {
+                 countBadge.classList.remove('hidden');
+                 countBadge.innerText = "1 Nueva";
+             }
+             if(markReadBtn) {
+                 const foot = markReadBtn.closest('div');
+                 if(foot) foot.classList.remove('hidden');
+             }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', renderDynamicState);
+</script>
+
+
+<!-- Pagos y Recibos Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if(localStorage.getItem('reservaSocial') === 'true') {
+            const tbody = document.querySelector('tbody');
+            if(tbody) {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group";
+                tr.innerHTML = `
+                    <td class="py-4 pl-8"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center group-hover:bg-white dark:group-hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined text-primary text-lg" data-icon="chair">chair</span></div><div><p class="text-sm font-bold text-slate-900 dark:text-white">Alquiler Salón Social</p><p class="text-[10px] text-slate-500 font-medium">Concepto Aforo C</p></div></div></td>
+                    <td class="py-4 text-sm font-semibold text-slate-700 dark:text-slate-300">03 Jun 2024</td>
+                    <td class="py-4"><p class="text-sm font-bold text-slate-900 dark:text-white">$45,000.00 <span class="text-[10px] text-slate-500 font-normal">COP</span></p></td>
+                    <td class="py-4"><span class="px-3 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-bold tracking-wider inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>PENDIENTE</span></td>
+                    <td class="py-4 pr-8 text-right"><button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">Pagar ahora</button></td>
+                `;
+                tbody.insertBefore(tr, tbody.firstChild);
+            }
+        }
+    });
+</script>
+
+
+<!-- Ocultamiento dinámico de pantallas administrativas -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const role = localStorage.getItem('userRole') || 'COPROPIETARIO';
+        if (role !== 'ADMIN') {
+            const linksToHide = [
+                'centro_de_votaciones_admin',
+                'panel_de_administraci_n',
+                'cargue_de_archivos'
+            ];
+            document.querySelectorAll('aside nav a').forEach(link => {
+                const href = link.getAttribute('onclick') || link.getAttribute('href') || '';
+                if (linksToHide.some(frag => href.includes(frag))) {
+                    link.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

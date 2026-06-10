@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PropiedadTransparente - Document Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-container": "#00174b",
+                        "tertiary": "#000000",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#271901",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-container": "#271901",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#00174b",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-container": "#497cff",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-container": "#98805d",
+                        "on-background": "#191c1e",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+
+<style>
+    /* UX Transitions para navegación estática sin React/Next */
+    @keyframes smoothLoad { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    body { animation: smoothLoad 0.25s ease-out forwards; }
+</style>
+
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Anchor -->
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-4 z-[60] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-x-hidden overflow-y-auto">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">domain</span>
+</div>
+<div>
+<h2 class="text-lg truncate font-bold text-slate-900 dark:text-white font-manrope tracking-tight">PropiedadTransparente</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../dashboard_copropietario/code.html'">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope tracking-tight">Dashboard Copropietario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../pagos_y_recibos/code.html'">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-manrope tracking-tight">Pagos y Recibos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../espacios_y_gobernanza/code.html'">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-manrope tracking-tight">Zonas comunes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../centro_de_votaciones_admin/code.html'">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-manrope tracking-tight">Centro Votaciones</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../panel_de_administraci_n/code.html'">
+<span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span>
+<span class="font-manrope tracking-tight">Panel Administrador</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../asistente_ia_chat_de_copropiedad_1/code.html'">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-manrope tracking-tight">Asistente y Chat</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../cargue_de_archivos/code.html'">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span class="font-manrope tracking-tight">Cargue de Archivos</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50">
+<div class="flex items-center gap-3 px-2">
+<img alt="Organization Logo" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Professional portrait of a middle-aged male property administrator in a sharp suit with a clean office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFw7WCI_SH-jxGMudN3tGFJnvU1BFBTOdd7F2lLbkw-RnC4r86IW7tEDelu0Bd4YuydOrVfbtBZk2X0KRDgiKXc7lZf3gd27ZMPGWtWRseCqp-78g2X4j3hfZpc_hn8ddjeeql1wdxbTzL1pgtz51RBq29KU6uvrvY9j7kRvNzSYkTFr9gikcDLiv39Vth7sv5T2_PcavCAqWgP5ljuc3n_ZrprU0J2sjKJHJEUlg5rY1Fsiocb-naB_UJD3OxHrg0gruSaAUHaza4"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-slate-900 truncate">Admin Carlos</p>
+<p class="text-xs text-slate-500 truncate">Unidad 402B</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col min-h-screen lg:ml-64 px-4 md:px-8 transition-all duration-300">
+<!-- TopNavBar Anchor -->
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-16rem)] h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex justify-between items-center px-4 lg:px-8 border-b border-slate-100 dark:border-slate-800 transition-all duration-300">
+<div class="hidden md:flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full w-80 lg:w-96 group focus-within:ring-2 ring-slate-200 dark:ring-slate-700 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-900" placeholder="Buscar movimientos, actas o reservas..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative" id="notifications-wrapper">
+<button id="notif-btn" class="relative text-slate-400 hover:text-slate-600 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-full p-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+
+<!-- Dropdown Flotante -->
+<div id="notif-dropdown" class="absolute right-0 top-full mt-3 w-80 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl hidden z-[70] overflow-hidden origin-top-right transition-all transform scale-95 opacity-0">
+    <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Notificaciones</h3>
+        <span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full">3 Nuevas</span>
+    </div>
+    <div class="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
+        <!-- Notif 1 -->
+        <a  onclick="window.location.href='../centro_de_votaciones_admin/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">how_to_vote</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Nueva Encuesta: Zonas Comunes</p>
+                    <p class="text-xs text-slate-500">Participa en la votación sobre paneles solares.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 2 horas</p>
+                </div>
+            </div>
+        </a>
+        <!-- Notif 2 -->
+        <div class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400 text-sm">campaign</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Aviso de Mantenimiento</p>
+                    <p class="text-xs text-slate-500">Limpieza de cisternas programada para este sábado a las 9:00 AM.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hoy a las 10:15</p>
+                </div>
+            </div>
+        </div>
+        <!-- Notif 3 -->
+        <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">receipt_long</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Pago Exitoso</p>
+                    <p class="text-xs text-slate-500">Tu recibo por la cuota de mantenimiento de Mayo está disponible.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 3 días</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="p-3 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-center">
+        <button id="mark-read-btn" class="text-xs font-bold text-primary hover:underline">Marcar todas como leídas</button>
+    </div>
+</div>
+</div>
+<a  onclick="window.location.href='../administracion_de_perfil/code.html'" class="flex items-center gap-3 pl-4 border-l border-slate-100 dark:border-slate-800 hover:opacity-60 transition-opacity cursor-pointer text-inherit no-underline">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold text-slate-900">Carlos Rodriguez</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-tighter">Copropietario</p>
+</div>
+<span class="material-symbols-outlined text-slate-900 text-3xl" data-icon="account_circle">account_circle</span>
+</a>
+</div>
+</header>
+<!-- Content Area -->
+<div class="pt-24 px-8 pb-12">
+<!-- Hero Header Section -->
+<div class="mb-10">
+<h2 class="text-3xl font-extrabold text-primary tracking-tight mb-2">Document Management</h2>
+<p class="text-on-surface-variant max-w-2xl">Securely upload, organize, and monitor all property-related documentation. Ensuring transparency for every stakeholder.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- Left Column: Upload Area (Bento Large) -->
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-slate-900">Upload Documents</h3>
+<span class="material-symbols-outlined text-primary-container" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<!-- Drag & Drop Zone -->
+<div class="border-2 border-dashed border-outline-variant/30 rounded-xl p-10 flex flex-col items-center justify-center text-center bg-surface-container-low/30 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="upload_file">upload_file</span>
+</div>
+<p class="text-sm font-semibold text-slate-900 mb-1">Click to upload or drag and drop</p>
+<p class="text-xs text-on-surface-variant mb-6">Excel, PDF, JPG or PNG (max. 10MB)</p>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-bold shadow-md hover:opacity-90 transition-opacity">Select Files</button>
+</div>
+<!-- Storage Summary -->
+<div class="mt-8 pt-8 border-t border-slate-100">
+<div class="flex justify-between items-end mb-2">
+<span class="text-xs font-bold text-slate-900">Storage Usage</span>
+<span class="text-xs text-slate-500">2.4 GB of 10 GB</span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[24%]"></div>
+</div>
+</div>
+</div>
+<!-- Quick Filters Bento -->
+<div class="bg-primary-container text-white rounded-xl p-6 shadow-xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-sm font-bold opacity-80 uppercase tracking-widest mb-4">Quick Browse</h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-white/10 hover:bg-white/20 p-3 rounded-lg flex flex-col gap-2 transition-colors">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="text-xs font-semibold">PDF Reports</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 p-3 rounded-lg flex flex-col gap-2 transition-colors">
+<span class="material-symbols-outlined" data-icon="table_chart">table_chart</span>
+<span class="text-xs font-semibold">Spreadsheets</span>
+</button>
+</div>
+</div>
+<!-- Abstract Background Decoration -->
+<div class="absolute -right-4 -bottom-4 w-32 h-32 bg-on-primary-container/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+<!-- Right Column: Document List (Bento Extra Wide) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-50">
+<h3 class="text-lg font-bold text-slate-900">Recent Uploads</h3>
+<div class="flex items-center gap-2">
+<select class="bg-surface-container-low border-none rounded-lg text-xs font-semibold text-slate-600 focus:ring-0 cursor-pointer">
+<option>Last 30 Days</option>
+<option>Last Quarter</option>
+<option>Year to Date</option>
+</select>
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-slate-400" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">Document Name</th>
+<th class="px-6 py-4 text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">Date</th>
+<th class="px-6 py-4 text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">Size</th>
+<th class="px-6 py-4 text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[10px] font-extrabold text-slate-500 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-error-container/30 text-error rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Annual_Tax_Report_2023.pdf</p>
+<p class="text-[11px] text-slate-500">Legal Documents</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">Oct 24, 2023</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">2.4 MB</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            Processed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="View">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="Archive">
+<span class="material-symbols-outlined text-sm" data-icon="archive">archive</span>
+</button>
+<button class="p-1.5 hover:bg-error-container/20 rounded transition-colors text-error" title="Delete">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-container/30 text-secondary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="table_view">table_view</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Q3_Maintenance_Expenses.xlsx</p>
+<p class="text-[11px] text-slate-500">Finance</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">Oct 23, 2023</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">842 KB</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700">
+<span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="View">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="Archive">
+<span class="material-symbols-outlined text-sm" data-icon="archive">archive</span>
+</button>
+<button class="p-1.5 hover:bg-error-container/20 rounded transition-colors text-error" title="Delete">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600" data-icon="image">image</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Facade_Renovation_Photo_1.jpg</p>
+<p class="text-[11px] text-slate-500">Project Photos</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">Oct 21, 2023</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">4.1 MB</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            Processed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="View">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="Archive">
+<span class="material-symbols-outlined text-sm" data-icon="archive">archive</span>
+</button>
+<button class="p-1.5 hover:bg-error-container/20 rounded transition-colors text-error" title="Delete">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-error-container/30 text-error rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Lease_Agreement_Unit_402.pdf</p>
+<p class="text-[11px] text-slate-500">Legal Documents</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">Oct 20, 2023</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-600">1.2 MB</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            Processed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="View">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 rounded transition-colors text-slate-600" title="Archive">
+<span class="material-symbols-outlined text-sm" data-icon="archive">archive</span>
+</button>
+<button class="p-1.5 hover:bg-error-container/20 rounded transition-colors text-error" title="Delete">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination-style Footer -->
+<div class="p-4 border-t border-slate-50 bg-slate-50/30 flex items-center justify-between">
+<span class="text-xs text-slate-500 font-medium">Showing 4 of 128 documents</span>
+<div class="flex gap-1">
+<button class="p-1 rounded hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-2 py-1 rounded bg-primary text-white text-[10px] font-bold">1</button>
+<button class="px-2 py-1 rounded hover:bg-slate-200 text-[10px] font-bold">2</button>
+<button class="px-2 py-1 rounded hover:bg-slate-200 text-[10px] font-bold">3</button>
+<button class="p-1 rounded hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Information Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+<div class="bg-white p-6 rounded-xl border border-outline-variant/10 flex items-start gap-4">
+<div class="p-3 bg-blue-50 text-blue-600 rounded-lg">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">Encrypted Storage</h4>
+<p class="text-xs text-slate-500 leading-relaxed">All uploaded documents are encrypted using AES-256 standards.</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-outline-variant/10 flex items-start gap-4">
+<div class="p-3 bg-purple-50 text-purple-600 rounded-lg">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">Audit Log</h4>
+<p class="text-xs text-slate-500 leading-relaxed">Every document access and modification is tracked and logged.</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-outline-variant/10 flex items-start gap-4">
+<div class="p-3 bg-amber-50 text-amber-600 rounded-lg">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">Stakeholder Access</h4>
+<p class="text-xs text-slate-500 leading-relaxed">Control which tenants or owners can view specific documents.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB - Suppressed on this page as per requirement "suppress on Details, Transactional, etc" but listed for presence logic -->
+<!-- Not rendered to prioritize the focus on Document Management Canvas -->
+
+<!-- Menú Deslizante JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('toggle-menu-btn')) return;
+
+        const sidebar = document.querySelector('aside');
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        
+        if (sidebar && header && main) {
+            // Eliminar clases conflictivas estáticas si las hay y asegurar base
+            sidebar.classList.add('transform', 'transition-transform', 'duration-300', 'z-[60]');
+            header.classList.add('transition-all', 'duration-300');
+            main.classList.add('transition-all', 'duration-300');
+
+            const menuBtnContainer = document.createElement('div');
+            menuBtnContainer.innerHTML = '<button id="toggle-menu-btn" class="flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-2 mr-2 lg:mr-4"><span class="material-symbols-outlined text-slate-800 dark:text-white">menu</span></button>';
+            const menuBtn = menuBtnContainer.firstChild;
+            header.insertBefore(menuBtn, header.firstChild);
+
+            // Capa oscura para dispositivos móviles
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0 lg:hidden';
+            document.body.appendChild(overlay);
+            
+            let isSidebarOpen = window.innerWidth >= 1024; // breakpoint lg Tailwind
+
+            function updateMenuUI() {
+                if (window.innerWidth >= 1024) { // Pantallas grandes (escritorio)
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('opacity-100');
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        sidebar.classList.add('lg:translate-x-0');
+                        header.style.width = 'calc(100% - 16rem)';
+                        main.style.marginLeft = '16rem';
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        sidebar.classList.remove('lg:translate-x-0');
+                        header.style.width = '100%';
+                        main.style.marginLeft = '0';
+                    }
+                } else { // Pantallas móviles e iPad vertical
+                    header.style.width = '100%';
+                    main.style.marginLeft = '0';
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        overlay.classList.remove('hidden');
+                        setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.remove('opacity-100');
+                        setTimeout(() => overlay.classList.add('hidden'), 300);
+                    }
+                }
+            }
+
+            menuBtn.onclick = () => {
+                isSidebarOpen = !isSidebarOpen;
+                updateMenuUI();
+            };
+
+            overlay.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+
+            // Escuchar redimensionamiento dinámico
+            window.addEventListener('resize', () => {
+                let wasDesktop = window.innerWidth >= 1024;
+                // Pequeño hack para resetear estado al pasar de mobile a desktop o viceversa
+                if(wasDesktop && sidebar.classList.contains('-translate-x-full') && header.style.width == '100%') {
+                    // Mantener decisiones del usuario
+                } else {
+                    isSidebarOpen = window.innerWidth >= 1024;
+                    updateMenuUI();
+                }
+            });
+
+            // Botón X en el propio sidebar para celular
+            const closeBtnContainer = document.createElement('div');
+            closeBtnContainer.innerHTML = '<button class="absolute top-4 right-4 lg:hidden flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-1"><span class="material-symbols-outlined text-slate-800 dark:text-white">close</span></button>';
+            const closeBtn = closeBtnContainer.firstChild;
+            closeBtn.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+            sidebar.appendChild(closeBtn);
+            
+            // Inicialización visual forzada
+            updateMenuUI();
+        }
+    });
+</script>
+
+<!-- Notificaciones JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notifBtn = document.getElementById('notif-btn');
+        const notifDropdown = document.getElementById('notif-dropdown');
+        const notifWrapper = document.getElementById('notifications-wrapper');
+
+        if (notifBtn && notifDropdown && notifWrapper) {
+            // Lógica para Marcar todo como leído
+            const markReadBtn = document.getElementById('mark-read-btn');
+            const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+            const redDot = document.querySelector('#notif-btn .bg-error');
+            const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+
+            function clearNotifs() {
+                if(notifsContainer) {
+                    notifsContainer.innerHTML = '<div class="p-8 text-center text-slate-500 flex flex-col items-center"><span class="material-symbols-outlined text-4xl mb-2 opacity-30">check_circle</span><p class="text-sm font-medium">Estás al día</p><p class="text-xs mt-1">No hay notificaciones nuevas</p></div>';
+                }
+                if(redDot) redDot.classList.add('hidden');
+                if(countBadge) countBadge.classList.add('hidden');
+                if(markReadBtn) markReadBtn.closest('div').classList.add('hidden'); // hides the footer action
+            }
+
+            // Check if already read across pages using localStorage
+            if(localStorage.getItem('notifsLeidas') === 'true') {
+                clearNotifs();
+            }
+
+            if(markReadBtn) {
+                markReadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // no cerrar el panel
+                    localStorage.setItem('notifsLeidas', 'true');
+                    clearNotifs();
+                });
+            }
+
+            notifBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent closing immediately
+                const isHidden = notifDropdown.classList.contains('hidden');
+                
+                if (isHidden) {
+                    notifDropdown.classList.remove('hidden');
+                    // Small delay to allow CSS display:block to apply before animating opacity
+                    setTimeout(() => {
+                        notifDropdown.classList.remove('scale-95', 'opacity-0');
+                        notifDropdown.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                } else {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150); // Matches transition duration
+                }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!notifWrapper.contains(e.target) && !notifDropdown.classList.contains('hidden')) {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150);
+                }
+            });
+        }
+    });
+</script>
+
+
+<!-- Arquitectura Global JS -->
+<script>
+    function renderDynamicState() {
+        const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+        const redDot = document.querySelector('#notif-btn .bg-error');
+        const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+        const markReadBtn = document.getElementById('mark-read-btn');
+        
+        if(localStorage.getItem('reservaSocial') === 'true' && localStorage.getItem('notifsLeidas') !== 'true') {
+             if(notifsContainer) {
+                 notifsContainer.innerHTML = `
+                    <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+                        <div class="flex gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">calendar_month</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Reserva Emitida Exitosamente</p>
+                                <p class="text-xs text-slate-500">Tu reserva del Salón Social generó un recargo por concepto de limpieza y aforo.</p>
+                                <p class="text-[10px] text-primary mt-1 font-bold">Ver factura pendiente en Pagos</p>
+                            </div>
+                        </div>
+                    </a>
+                 `;
+             }
+             if(redDot) redDot.classList.remove('hidden');
+             if(countBadge) {
+                 countBadge.classList.remove('hidden');
+                 countBadge.innerText = "1 Nueva";
+             }
+             if(markReadBtn) {
+                 const foot = markReadBtn.closest('div');
+                 if(foot) foot.classList.remove('hidden');
+             }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', renderDynamicState);
+</script>
+
+
+<!-- Ocultamiento dinámico de pantallas administrativas -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const role = localStorage.getItem('userRole') || 'COPROPIETARIO';
+        if (role !== 'ADMIN') {
+            const linksToHide = [
+                'centro_de_votaciones_admin',
+                'panel_de_administraci_n',
+                'cargue_de_archivos'
+            ];
+            document.querySelectorAll('aside nav a').forEach(link => {
+                const href = link.getAttribute('onclick') || link.getAttribute('href') || '';
+                if (linksToHide.some(frag => href.includes(frag))) {
+                    link.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile &amp; Settings - PropiedadTransparente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-container": "#00174b",
+                        "tertiary": "#000000",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#271901",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-container": "#271901",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#00174b",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-container": "#497cff",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-container": "#98805d",
+                        "on-background": "#191c1e",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+
+<style>
+    /* UX Transitions para navegación estática sin React/Next */
+    @keyframes smoothLoad { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    body { animation: smoothLoad 0.25s ease-out forwards; }
+</style>
+
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar (Fixed) -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_20px_50px_rgba(15,23,42,0.06)] flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black text-slate-900 dark:text-slate-50 brand-font">PropiedadTransparente</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-lg"  cursor-pointer  onclick="window.location.href='#'">Dashboard Copropietario</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-lg"  cursor-pointer  onclick="window.location.href='#'">Properties</a>
+<a class="text-slate-900 dark:text-white font-bold border-b-2 border-slate-900 dark:border-white px-3 py-1"  cursor-pointer  onclick="window.location.href='#'">Settings</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-slate-200/50 dark:hover:bg-slate-800/50 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-50" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-200/50 dark:hover:bg-slate-800/50 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-50" data-icon="settings">settings</span>
+</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover ml-2" data-alt="Professional headshot of a person with a friendly expression in a brightly lit office setting, soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMtCiPqoBtiKBaGcAtU0jFQ-7GmjXHtfdG7DTLS0--bou214iNd6Jibk2AYbuECa4xkHJsAUjCHTI0WlogWpSboCtNEgDQndKi2cLwNI0F7Sll6ET4MbWugpwTu8M6edEIrXxNxlxU__0uB5qyPZ43xSZ-sbYwQ2WcVgaFm1sWAxu9edTtc6zBNj1MjRj6qJcZDBoo4GL-f1sCcYGYP_BKOV8GnxDTPCHQe_9pcAXIYdIvkbT_fgsRXnQ9UxMkdV2dZ8DQaz721WrA"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Fixed Desktop) -->
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-4 z-[60] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-x-hidden overflow-y-auto">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">domain</span>
+</div>
+<div>
+<h2 class="text-lg truncate font-bold text-slate-900 dark:text-white font-manrope tracking-tight">PropiedadTransparente</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../dashboard_copropietario/code.html'">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope tracking-tight">Dashboard Copropietario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../pagos_y_recibos/code.html'">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-manrope tracking-tight">Pagos y Recibos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../espacios_y_gobernanza/code.html'">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-manrope tracking-tight">Zonas comunes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../centro_de_votaciones_admin/code.html'">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-manrope tracking-tight">Centro Votaciones</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../panel_de_administraci_n/code.html'">
+<span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span>
+<span class="font-manrope tracking-tight">Panel Administrador</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../asistente_ia_chat_de_copropiedad_1/code.html'">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-manrope tracking-tight">Asistente y Chat</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 font-medium hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"  cursor-pointer  onclick="window.location.href='../cargue_de_archivos/code.html'">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span class="font-manrope tracking-tight">Cargue de Archivos</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50">
+<div class="flex items-center gap-3 px-2">
+<img alt="Organization Logo" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Professional portrait of a middle-aged male property administrator in a sharp suit with a clean office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFw7WCI_SH-jxGMudN3tGFJnvU1BFBTOdd7F2lLbkw-RnC4r86IW7tEDelu0Bd4YuydOrVfbtBZk2X0KRDgiKXc7lZf3gd27ZMPGWtWRseCqp-78g2X4j3hfZpc_hn8ddjeeql1wdxbTzL1pgtz51RBq29KU6uvrvY9j7kRvNzSYkTFr9gikcDLiv39Vth7sv5T2_PcavCAqWgP5ljuc3n_ZrprU0J2sjKJHJEUlg5rY1Fsiocb-naB_UJD3OxHrg0gruSaAUHaza4"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-slate-900 truncate">Admin Carlos</p>
+<p class="text-xs text-slate-500 truncate">Unidad 402B</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 px-4 md:pl-72 md:pr-12 min-h-screen lg:ml-64 px-4 md:px-8 transition-all duration-300">
+<div class="max-w-5xl mx-auto space-y-8">
+<!-- Header Section -->
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-16rem)] h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex justify-between items-center px-4 lg:px-8 border-b border-slate-100 dark:border-slate-800 transition-all duration-300">
+<div class="hidden md:flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full w-80 lg:w-96 group focus-within:ring-2 ring-slate-200 dark:ring-slate-700 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-900" placeholder="Buscar movimientos, actas o reservas..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative" id="notifications-wrapper">
+<button id="notif-btn" class="relative text-slate-400 hover:text-slate-600 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-full p-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+
+<!-- Dropdown Flotante -->
+<div id="notif-dropdown" class="absolute right-0 top-full mt-3 w-80 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl hidden z-[70] overflow-hidden origin-top-right transition-all transform scale-95 opacity-0">
+    <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Notificaciones</h3>
+        <span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full">3 Nuevas</span>
+    </div>
+    <div class="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
+        <!-- Notif 1 -->
+        <a  onclick="window.location.href='../centro_de_votaciones_admin/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">how_to_vote</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Nueva Encuesta: Zonas Comunes</p>
+                    <p class="text-xs text-slate-500">Participa en la votación sobre paneles solares.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 2 horas</p>
+                </div>
+            </div>
+        </a>
+        <!-- Notif 2 -->
+        <div class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400 text-sm">campaign</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Aviso de Mantenimiento</p>
+                    <p class="text-xs text-slate-500">Limpieza de cisternas programada para este sábado a las 9:00 AM.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hoy a las 10:15</p>
+                </div>
+            </div>
+        </div>
+        <!-- Notif 3 -->
+        <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">receipt_long</span>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Pago Exitoso</p>
+                    <p class="text-xs text-slate-500">Tu recibo por la cuota de mantenimiento de Mayo está disponible.</p>
+                    <p class="text-[10px] text-slate-400 mt-1 font-medium">Hace 3 días</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="p-3 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-center">
+        <button id="mark-read-btn" class="text-xs font-bold text-primary hover:underline">Marcar todas como leídas</button>
+    </div>
+</div>
+</div>
+<a  onclick="window.location.href='../administracion_de_perfil/code.html'" class="flex items-center gap-3 pl-4 border-l border-slate-100 dark:border-slate-800 hover:opacity-60 transition-opacity cursor-pointer text-inherit no-underline">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold text-slate-900">Carlos Rodriguez</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-tighter">Copropietario</p>
+</div>
+<span class="material-symbols-outlined text-slate-900 text-3xl" data-icon="account_circle">account_circle</span>
+</a>
+</div>
+</header>
+<!-- Grid Layout for Settings Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Personal Information -->
+<section class="lg:col-span-2 space-y-8">
+<!-- Personal Info Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_20px_50px_rgba(25,28,30,0.04)]">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+<h3 class="text-xl font-bold tracking-tight">Personal Information</h3>
+</div>
+<div class="flex flex-col md:flex-row gap-10 items-start">
+<div class="relative group">
+<img alt="Profile image upload" class="w-32 h-32 rounded-2xl object-cover ring-4 ring-surface-container-low" data-alt="Close up of a modern profile picture showing a person with a minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIU6dgSJGuHtXDYAW83UHMO79OeheeW_8omtRO7EBcFZy3kOTg583CYNrX3AMJnYKbn79l3kqhQUdtil1zoBOVwYt0JQ0W7Kq4F7OERrGqDlEJ1WqqlYgGMEXMRMljpw0IUVui6XEqrTKXh48ODwZKGV_PFoLTgtnuvo_txfaXYmwx_58Es3Uz2FrUqGd5CZgOD6QNWeFrG3q9RpZsay0zCa3IydGk9sm9lKGkoWfIMc8A4EZk_a23ig_8B4fNT0SwHJWBqsie1BTZ"/>
+<button class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-lg shadow-lg active:scale-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Full Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary transition-all" type="text" value="Julian Alvarez"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Email Address</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary transition-all" type="email" value="julian.alvarez@propiedad.co"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                            VERIFIED
+                                        </div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Phone Number</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary transition-all" type="tel" value="+57 310 456 7890"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Unit / Apartment</label>
+<div class="w-full bg-surface-container-low text-on-surface-variant cursor-not-allowed rounded-lg px-4 py-3 font-medium">
+                                        Tower A - Apt 1402
+                                    </div>
+</div>
+<div class="space-y-1.5 md:col-span-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Role</label>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full text-xs font-bold">Copropietario</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-xs font-bold">Member since 2022</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Preferences Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_20px_50px_rgba(25,28,30,0.04)]">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+<h3 class="text-xl font-bold tracking-tight">Notification Preferences</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70">
+<th class="pb-4 font-normal">Activity Type</th>
+<th class="pb-4 text-center font-normal">Email</th>
+<th class="pb-4 text-center font-normal">SMS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<p class="font-semibold text-on-surface">Payments &amp; Receipts</p>
+<p class="text-xs text-on-surface-variant">Invoices and monthly balance updates</p>
+</td>
+<td class="py-4 text-center">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 text-center">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<p class="font-semibold text-on-surface">Voting &amp; Assemblies</p>
+<p class="text-xs text-on-surface-variant">Important decision making polls</p>
+</td>
+<td class="py-4 text-center">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 text-center">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<p class="font-semibold text-on-surface">General Announcements</p>
+<p class="text-xs text-on-surface-variant">Community news and maintenance alerts</p>
+</td>
+<td class="py-4 text-center">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 text-center">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<p class="font-semibold text-on-surface">Chat Messages</p>
+<p class="text-xs text-on-surface-variant">Private messages and group pings</p>
+</td>
+<td class="py-4 text-center">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 text-center">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Right Column: Security & Platform -->
+<section class="space-y-8">
+<!-- Account Security Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_20px_50px_rgba(25,28,30,0.04)]">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h3 class="text-xl font-bold tracking-tight">Account Security</h3>
+</div>
+<div class="space-y-6">
+<div>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-high rounded-xl hover:bg-surface-container transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="lock">lock</span>
+<span class="font-semibold">Change Password</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="phonelink_lock">phonelink_lock</span>
+<span class="font-semibold">2FA Auth</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Secure your account with an extra layer of security via SMS or Auth App.</p>
+</div>
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Last Login Activity</h4>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-xs text-on-surface-variant" data-icon="desktop_windows">desktop_windows</span>
+<div class="flex-1">
+<p class="font-medium">Chrome on MacOS</p>
+<p class="text-[10px] text-on-surface-variant">Bogotá, CO • Active Now</p>
+</div>
+</div>
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-xs text-on-surface-variant" data-icon="smartphone">smartphone</span>
+<div class="flex-1">
+<p class="font-medium">iPhone 15 Pro</p>
+<p class="text-[10px] text-on-surface-variant">Bogotá, CO • 2 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Platform Settings Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_20px_50px_rgba(25,28,30,0.04)]">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="tune">tune</span>
+<h3 class="text-xl font-bold tracking-tight">Platform Settings</h3>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Preferred Language</label>
+<select class="w-full bg-surface-container-highest border-none rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary appearance-none font-medium">
+<option>Spanish (Español)</option>
+<option selected="">English (US)</option>
+<option>Portuguese (Português)</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Interface Theme</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-xl font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="light_mode">light_mode</span>
+                                        Light
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 bg-surface-container-highest text-on-surface rounded-xl font-bold hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="dark_mode">dark_mode</span>
+                                        Dark
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Action Bar (Mobile Responsive) -->
+<div class="lg:hidden flex gap-4 pt-4 border-t border-surface-container">
+<button class="flex-1 py-4 rounded-xl bg-secondary-container text-on-secondary-container font-bold">Cancel</button>
+<button class="flex-1 py-4 rounded-xl bg-primary text-white font-bold">Save Changes</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center px-4 z-50">
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold">Dashboard Copropietario</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="text-[10px] font-bold">Properties</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<img alt="User thumb" class="w-6 h-6 rounded-full grayscale opacity-70" data-alt="Miniature round profile icon of a person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1x3jZegTNvVITBvORq28eAy0LPGzjKatzMnLDszNsj_zDBeq3Yi09OwOMST0zgPlw0XWM0LIcOPDAlHIdveFlibxgpVVE5ZW7rhkWTSDrQjVSaeE9ExvLx39IP7ig3rNQHEpD_bivZCgPsXGlKirs2cAzSkWMIzlCIfmveRCoRj-yuAjUu706fJMA_3Fs2PdMIFoXLKWK9GFCOHEPlMnIcd15kuho-VduSbt8wLeQEjg9dLI9UeI4caaCdeqnSMOU_33Ni8aZ5awE"/>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+
+<!-- Menú Deslizante JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('toggle-menu-btn')) return;
+
+        const sidebar = document.querySelector('aside');
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        
+        if (sidebar && header && main) {
+            // Eliminar clases conflictivas estáticas si las hay y asegurar base
+            sidebar.classList.add('transform', 'transition-transform', 'duration-300', 'z-[60]');
+            header.classList.add('transition-all', 'duration-300');
+            main.classList.add('transition-all', 'duration-300');
+
+            const menuBtnContainer = document.createElement('div');
+            menuBtnContainer.innerHTML = '<button id="toggle-menu-btn" class="flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-2 mr-2 lg:mr-4"><span class="material-symbols-outlined text-slate-800 dark:text-white">menu</span></button>';
+            const menuBtn = menuBtnContainer.firstChild;
+            header.insertBefore(menuBtn, header.firstChild);
+
+            // Capa oscura para dispositivos móviles
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0 lg:hidden';
+            document.body.appendChild(overlay);
+            
+            let isSidebarOpen = window.innerWidth >= 1024; // breakpoint lg Tailwind
+
+            function updateMenuUI() {
+                if (window.innerWidth >= 1024) { // Pantallas grandes (escritorio)
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('opacity-100');
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        sidebar.classList.add('lg:translate-x-0');
+                        header.style.width = 'calc(100% - 16rem)';
+                        main.style.marginLeft = '16rem';
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        sidebar.classList.remove('lg:translate-x-0');
+                        header.style.width = '100%';
+                        main.style.marginLeft = '0';
+                    }
+                } else { // Pantallas móviles e iPad vertical
+                    header.style.width = '100%';
+                    main.style.marginLeft = '0';
+                    if (isSidebarOpen) {
+                        sidebar.classList.remove('-translate-x-full');
+                        overlay.classList.remove('hidden');
+                        setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                    } else {
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.remove('opacity-100');
+                        setTimeout(() => overlay.classList.add('hidden'), 300);
+                    }
+                }
+            }
+
+            menuBtn.onclick = () => {
+                isSidebarOpen = !isSidebarOpen;
+                updateMenuUI();
+            };
+
+            overlay.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+
+            // Escuchar redimensionamiento dinámico
+            window.addEventListener('resize', () => {
+                let wasDesktop = window.innerWidth >= 1024;
+                // Pequeño hack para resetear estado al pasar de mobile a desktop o viceversa
+                if(wasDesktop && sidebar.classList.contains('-translate-x-full') && header.style.width == '100%') {
+                    // Mantener decisiones del usuario
+                } else {
+                    isSidebarOpen = window.innerWidth >= 1024;
+                    updateMenuUI();
+                }
+            });
+
+            // Botón X en el propio sidebar para celular
+            const closeBtnContainer = document.createElement('div');
+            closeBtnContainer.innerHTML = '<button class="absolute top-4 right-4 lg:hidden flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full p-1"><span class="material-symbols-outlined text-slate-800 dark:text-white">close</span></button>';
+            const closeBtn = closeBtnContainer.firstChild;
+            closeBtn.onclick = () => {
+                isSidebarOpen = false;
+                updateMenuUI();
+            };
+            sidebar.appendChild(closeBtn);
+            
+            // Inicialización visual forzada
+            updateMenuUI();
+        }
+    });
+</script>
+
+<!-- Notificaciones JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notifBtn = document.getElementById('notif-btn');
+        const notifDropdown = document.getElementById('notif-dropdown');
+        const notifWrapper = document.getElementById('notifications-wrapper');
+
+        if (notifBtn && notifDropdown && notifWrapper) {
+            // Lógica para Marcar todo como leído
+            const markReadBtn = document.getElementById('mark-read-btn');
+            const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+            const redDot = document.querySelector('#notif-btn .bg-error');
+            const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+
+            function clearNotifs() {
+                if(notifsContainer) {
+                    notifsContainer.innerHTML = '<div class="p-8 text-center text-slate-500 flex flex-col items-center"><span class="material-symbols-outlined text-4xl mb-2 opacity-30">check_circle</span><p class="text-sm font-medium">Estás al día</p><p class="text-xs mt-1">No hay notificaciones nuevas</p></div>';
+                }
+                if(redDot) redDot.classList.add('hidden');
+                if(countBadge) countBadge.classList.add('hidden');
+                if(markReadBtn) markReadBtn.closest('div').classList.add('hidden'); // hides the footer action
+            }
+
+            // Check if already read across pages using localStorage
+            if(localStorage.getItem('notifsLeidas') === 'true') {
+                clearNotifs();
+            }
+
+            if(markReadBtn) {
+                markReadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // no cerrar el panel
+                    localStorage.setItem('notifsLeidas', 'true');
+                    clearNotifs();
+                });
+            }
+
+            notifBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent closing immediately
+                const isHidden = notifDropdown.classList.contains('hidden');
+                
+                if (isHidden) {
+                    notifDropdown.classList.remove('hidden');
+                    // Small delay to allow CSS display:block to apply before animating opacity
+                    setTimeout(() => {
+                        notifDropdown.classList.remove('scale-95', 'opacity-0');
+                        notifDropdown.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                } else {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150); // Matches transition duration
+                }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!notifWrapper.contains(e.target) && !notifDropdown.classList.contains('hidden')) {
+                    notifDropdown.classList.remove('scale-100', 'opacity-100');
+                    notifDropdown.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        notifDropdown.classList.add('hidden');
+                    }, 150);
+                }
+            });
+        }
+    });
+</script>
+
+
+<!-- Arquitectura Global JS -->
+<script>
+    function renderDynamicState() {
+        const notifsContainer = document.querySelector('#notif-dropdown .max-h-80');
+        const redDot = document.querySelector('#notif-btn .bg-error');
+        const countBadge = document.querySelector('#notif-dropdown .bg-primary.text-on-primary');
+        const markReadBtn = document.getElementById('mark-read-btn');
+        
+        if(localStorage.getItem('reservaSocial') === 'true' && localStorage.getItem('notifsLeidas') !== 'true') {
+             if(notifsContainer) {
+                 notifsContainer.innerHTML = `
+                    <a  onclick="window.location.href='../pagos_y_recibos/code.html'" class="block p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer group">
+                        <div class="flex gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">calendar_month</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Reserva Emitida Exitosamente</p>
+                                <p class="text-xs text-slate-500">Tu reserva del Salón Social generó un recargo por concepto de limpieza y aforo.</p>
+                                <p class="text-[10px] text-primary mt-1 font-bold">Ver factura pendiente en Pagos</p>
+                            </div>
+                        </div>
+                    </a>
+                 `;
+             }
+             if(redDot) redDot.classList.remove('hidden');
+             if(countBadge) {
+                 countBadge.classList.remove('hidden');
+                 countBadge.innerText = "1 Nueva";
+             }
+             if(markReadBtn) {
+                 const foot = markReadBtn.closest('div');
+                 if(foot) foot.classList.remove('hidden');
+             }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', renderDynamicState);
+</script>
+
+
+<!-- Ocultamiento dinámico de pantallas administrativas -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const role = localStorage.getItem('userRole') || 'COPROPIETARIO';
+        if (role !== 'ADMIN') {
+            const linksToHide = [
+                'centro_de_votaciones_admin',
+                'panel_de_administraci_n',
+                'cargue_de_archivos'
+            ];
+            document.querySelectorAll('aside nav a').forEach(link => {
+                const href = link.getAttribute('onclick') || link.getAttribute('href') || '';
+                if (linksToHide.some(frag => href.includes(frag))) {
+                    link.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>
